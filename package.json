@@ -1,0 +1,24 @@
+{
+  "name": "is80",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FurNocte/IS80.git"
+  },
+  "author": "Fur Nocte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FurNocte/IS80/issues"
+  },
+  "homepage": "https://github.com/FurNocte/IS80#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "p-promise": "^0.5.0"
+  }
+}

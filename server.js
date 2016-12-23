@@ -31,7 +31,7 @@ app.post('/api/upload', function(req, res) {
         return;
     }
     api.uploadImage(req.files).then(function(path) {
-        res.status(200).json(path);
+        res.status(200).json({"path": 'http://' + req.get('host') + path});
     }).fail(function(err) {
         res.status(503).json(err);
     });

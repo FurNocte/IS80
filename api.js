@@ -26,11 +26,12 @@ function uploadImage(files) {
     var defer = P.defer();
     var sampleFile = files.sampleFile;
     getImagespath().then(function(path) {
-        sampleFile.mv(__dirname + path + (new Date().getTime()) + '.png', function(err) {
+        var name = path + (new Date().getTime()) + '.png';
+        sampleFile.mv(__dirname + name, function(err) {
             if (err)
                 defer.reject(err);
             else
-                defer.resolve();
+                defer.resolve(name);
         });
     });
     return defer.promise;

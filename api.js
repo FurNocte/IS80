@@ -22,5 +22,20 @@ function getImages() {
     return defer.promise;
 }
 
+function uploadImage(files) {
+    var defer = P.defer();
+    var sampleFile = files.sampleFile;
+    getImagespath().then(function(path) {
+        sampleFile.mv(__dirname + path + (new Date().getTime()) + '.png', function(err) {
+            if (err)
+                defer.reject(err);
+            else
+                defer.resolve();
+        });
+    });
+    return defer.promise;
+}
+
 exports.getImagespath = getImagespath;
 exports.getImages = getImages;
+exports.uploadImage = uploadImage;

@@ -1,4 +1,4 @@
 {
     "path": "/Pictures/",
-    "subdirs" : "%y/%m"
+    "subdirs" : "%y/%m/%d/"
 }

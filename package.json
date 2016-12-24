@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "express-fileupload": "0.0.5",
+    "fs-extra": "^1.0.0",
     "p-promise": "^0.5.0",
     "underscore": "^1.8.3"
   }

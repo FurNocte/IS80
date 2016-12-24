@@ -1,5 +1,5 @@
 var P = require('p-promise');
-var fs = require('fs');
+var fs = require('fs-extra');
 var _ = require('underscore');
 var config = JSON.parse(fs.readFileSync(__dirname + '/config.json', 'utf8'));
 
@@ -59,10 +59,12 @@ function uploadImage(files) {
     var defer = P.defer();
     var sampleFile = files.sampleFile;
     getImagespath().then(function(path) {
+        path = path + getSubdirs();
         var name = path + (new Date().getTime()) + '.png';
+        console.log(name);
         fs.exists(__dirname + path, function(exists) {
             if (!exists) {
-                fs.mkdir(__dirname + path, function() {
+                fs.mkdirs(__dirname + path, function() {
                     sampleFile.mv(__dirname + name, function(err) {
                         if (err)
                             defer.reject(err);
@@ -80,6 +82,12 @@ function uploadImage(files) {
         });
     });
     return defer.promise;
+}
+
+function getSubdirs() {
+    return (config.subdirs.replace('%y', new Date().getFullYear())
+        .replace('%m', new Date().getMonth() + 1)
+        .replace('%d', new Date().getDate()) + '/');
 }
 
 exports.getImagespath = getImagespath;

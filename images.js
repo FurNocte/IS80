@@ -18,5 +18,5 @@ images.forEach(function(el) {
     $('#images').append('<a href="' + imagespath + path + '/' + el + '"><img src="' + imagespath + path + '/' + el + '" style="max-width: 250px"/></a>');
 });
 dirs.forEach(function(el) {
-    $('#dirs').append('<a href="./index.html?path=' + el + '">' + el + '</a><br/>');
+    $('#dirs').append('<a href="./index.html?path=' + path + '/' + el + '">' + el + '</a><br/>');
 });

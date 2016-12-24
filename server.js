@@ -18,7 +18,15 @@ app.get('/api/imagespath', function(req, res) {
 });
 
 app.get('/api/images', function(req, res) {
-    api.getImages().then(function(path) {
+    api.getImages(req.query.path).then(function(path) {
+        res.status(200).json(path);
+    }).fail(function(err) {
+        res.status(503).json(err);
+    });
+});
+
+app.get('/api/dirs', function(req, res) {
+    api.getDirs(req.query.path).then(function(path) {
         res.status(200).json(path);
     }).fail(function(err) {
         res.status(503).json(err);

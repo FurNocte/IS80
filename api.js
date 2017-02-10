@@ -60,8 +60,7 @@ function uploadImage(files) {
     var sampleFile = files.sampleFile;
     getImagespath().then(function(path) {
         path = path + getSubdirs();
-        var name = path + (new Date().getTime()) + '.png';
-        console.log(name);
+        var name = path + sampleFile.name.replace(/ /g, '');
         fs.exists(__dirname + path, function(exists) {
             if (!exists) {
                 fs.mkdirs(__dirname + path, function() {
@@ -72,7 +71,7 @@ function uploadImage(files) {
                             defer.resolve(name);
                     });
                 });
-            }
+            } else
             sampleFile.mv(__dirname + name, function(err) {
                 if (err)
                     defer.reject(err);
